@@ -76,6 +76,12 @@ body{
     margin:5px 0;
 }
 
+#share-a2 {
+    font-weight: bold;
+    text-decoration: none;
+    color:white;
+}
+
 @media only screen and (max-width:900px) {
     body {
         width:auto;

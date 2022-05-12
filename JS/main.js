@@ -66,12 +66,14 @@ function confirm(){
 
     absentees = ""
     presentees = ""
+    absentees2 = ""
     var divPrEl = document.getElementById("present")
     var divAbEl = document.getElementById("absent")
     
     for (var i=0; i < bt.length; i++) {
         if(bt[i].classList.contains("btn-danger")) {
             absentees += bt[i].firstElementChild.innerText + ", "
+            absentees2 += bt[i].firstElementChild.innerText + " - _" + bt[i].firstElementChild.nextElementSibling.innerText + "_%0a"  + "9191919191 %0a"
             abCount++;
         }
         else if(bt[i].classList.contains("btn-success")) {
@@ -87,7 +89,10 @@ function confirm(){
     divAbEl.textContent=`${absentees}`
 
     shareA = document.getElementById("share-a")
+    shareA2 = document.getElementById("share-a2")
 
+    shareA2.href="whatsapp://send?text="+ "*"+currDate+"*%0a%0a" + "_*"+subjectName+": Attendance"+"*_%0a%0a" + `*Presentees: (${prCount} Members)*` + "%0a" + absentees2 + "%0a%0a" + `*Absentees: (${abCount} Members)*` + "%0a" +  divAbEl.textContent;
+    
     shareA.href="whatsapp://send?text="+ "*"+currDate+"*%0a%0a" + "_*"+subjectName+": Attendance"+"*_%0a%0a" + `*Presentees: (${prCount} Members)*` + "%0a" + divPrEl.textContent + "%0a%0a" + `*Absentees: (${abCount} Members)*` + "%0a" +  divAbEl.textContent;
 
     shareA.setAttribute("data-action","share/whatsapp/share");
